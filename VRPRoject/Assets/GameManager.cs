@@ -21,6 +21,9 @@ public class GameManager : MonoBehaviour
 
     private int score;
 
+    public TargetColors[] sequenceCombo;
+    public int counter = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,6 +43,21 @@ public class GameManager : MonoBehaviour
     public int GetScore()
     {
         return this.score;  
+    }
+
+    public bool FillAndCompare(TargetColors color)
+    {
+        this.sequenceCombo[this.counter] = color;
+        if(this.sequenceCombo[this.counter] != GameObject.FindGameObjectWithTag("Generator").GetComponent<SequenceGenerator>().sequence[this.counter])
+        {
+            return false;
+        }
+        else
+        {
+            this.counter++;
+            return true;
+        }
+
     }
 
 

@@ -6,6 +6,8 @@ public class Target : MonoBehaviour
 {
     [SerializeField]
     private int scoreValue;
+    [SerializeField]
+    private TargetColors color;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,15 @@ public class Target : MonoBehaviour
         if (collision.gameObject.CompareTag("Shuriken"))
         {
             GameManager._instance.IncrementScore(scoreValue);
+            if(!GameManager._instance.FillAndCompare(color))
+            {
+                Debug.Log("NO");
+                GameObject.FindGameObjectWithTag("Generator").SendMessage("GenerateSequence");
+            }
+            else
+            {
+                Debug.Log("YES");
+            }
             Destroy(this.gameObject);
         }
     }

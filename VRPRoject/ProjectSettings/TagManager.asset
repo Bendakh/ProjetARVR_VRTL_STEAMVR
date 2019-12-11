@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Shuriken
+  - HUD
+  - Generator
   layers:
   - Default
   - TransparentFX
