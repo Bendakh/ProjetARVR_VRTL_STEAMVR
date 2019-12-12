@@ -20,9 +20,11 @@ public class GameManager : MonoBehaviour
     }
 
     private int score;
+    public int comboCounter = 0;
 
     public TargetColors[] sequenceCombo;
     public int counter = 0;
+    public int scoreMultiplier = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +49,8 @@ public class GameManager : MonoBehaviour
 
     public bool FillAndCompare(TargetColors color)
     {
+        
+
         this.sequenceCombo[this.counter] = color;
         if(this.sequenceCombo[this.counter] != GameObject.FindGameObjectWithTag("Generator").GetComponent<SequenceGenerator>().sequence[this.counter])
         {
@@ -55,15 +59,26 @@ public class GameManager : MonoBehaviour
         else
         {
             this.counter++;
+
             return true;
         }
 
-    }
-
-
-    // Update is called once per frame
-    void Update()
-    {
         
     }
+
+    private void Update()
+    {
+        SetMultiplier();
+    }
+
+    private void SetMultiplier()
+    {
+        if (comboCounter < 5)
+            scoreMultiplier = 1;
+        else if (comboCounter >= 5 && comboCounter < 10)
+            scoreMultiplier = 2;
+        else if (comboCounter >= 10)
+            scoreMultiplier = 3;
+    }
+
 }

@@ -12,6 +12,8 @@ public class HUDScript : MonoBehaviour
     GameObject sequencePanel;
     [SerializeField]
     GameObject targetGFXPrefab;
+    [SerializeField]
+    TextMeshProUGUI comboText;
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,7 @@ public class HUDScript : MonoBehaviour
     private void UpdateHUD()
     {
         this.scoreText.text = "Score : " + GameManager._instance.GetScore().ToString();
+        this.comboText.text = "Combo : " + GameManager._instance.comboCounter.ToString();
     }
 
     public void ClearSequencePanel()

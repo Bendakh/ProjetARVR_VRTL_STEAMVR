@@ -24,15 +24,24 @@ public class Target : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Shuriken"))
         {
-            GameManager._instance.IncrementScore(scoreValue);
+            
             if(!GameManager._instance.FillAndCompare(color))
             {
                 Debug.Log("NO");
+                GameManager._instance.comboCounter = 0;
                 GameObject.FindGameObjectWithTag("Generator").SendMessage("GenerateSequence");
             }
             else
             {
+                GameManager._instance.IncrementScore(scoreValue * GameManager._instance.scoreMultiplier);
+                GameManager._instance.comboCounter++;
                 Debug.Log("YES");
+            }
+            Destroy(collision.gameObject);
+            if (GameManager._instance.counter == 7)
+            {
+                Debug.Log("Victory");
+                GameObject.FindGameObjectWithTag("Generator").SendMessage("GenerateSequence");
             }
             Destroy(this.gameObject);
         }
