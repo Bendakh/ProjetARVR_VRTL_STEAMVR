@@ -33,4 +33,12 @@ public class ThrowScript : MonoBehaviour
             shu.GetComponent<Rigidbody>().velocity = this.transform.forward * 20;
         }
     }
+
+    public void ThorwShuriken()
+    {
+        GameObject shu = Instantiate(shurikenPrefab, this.transform.position, Quaternion.identity);
+
+
+        shu.GetComponent<Rigidbody>().velocity = this.transform.forward * 20;
+    }
 }
