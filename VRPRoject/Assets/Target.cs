@@ -8,6 +8,8 @@ public class Target : MonoBehaviour
     private int scoreValue;
     [SerializeField]
     private TargetColors color;
+    [SerializeField]
+    private float moveSpeed;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,21 @@ public class Target : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void MoveCircular()
+    {
+
+    }
+
+    private void MoveHor()
+    {
+
+    }
+
+    private void MoveVert()
+    {
+
     }
 
     private void OnCollisionEnter(Collision collision)
