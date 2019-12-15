@@ -14,6 +14,8 @@ public class HUDScript : MonoBehaviour
     GameObject targetGFXPrefab;
     [SerializeField]
     TextMeshProUGUI comboText;
+    [SerializeField]
+    TextMeshProUGUI timeCounter;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +32,8 @@ public class HUDScript : MonoBehaviour
     {
         this.scoreText.text = "Score : " + GameManager._instance.GetScore().ToString();
         this.comboText.text = "Combo : " + GameManager._instance.comboCounter.ToString();
+        this.timeCounter.text = "Time remaining : " + Mathf.Floor(GameManager._instance.GetTimeRemaining()).ToString();
+        
     }
 
     public void ClearSequencePanel()

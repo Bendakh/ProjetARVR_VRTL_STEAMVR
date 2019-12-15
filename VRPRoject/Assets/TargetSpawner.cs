@@ -32,10 +32,12 @@ public class TargetSpawner : MonoBehaviour
 
     IEnumerator SpawnCoroutine()
     {
-        while (true)
+        while (!GameManager._instance.gameEnd)
         {
-            Instantiate(targetList[Random.Range(0, targetList.Length)], new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Random.Range(minZ, maxZ)), Quaternion.identity);
-            yield return new WaitForSeconds(delay);
+            
+                Instantiate(targetList[Random.Range(0, targetList.Length)], new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Random.Range(minZ, maxZ)), Quaternion.identity);
+                yield return new WaitForSeconds(delay);
+            
         }
     }
 }

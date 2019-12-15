@@ -26,10 +26,18 @@ public class GameManager : MonoBehaviour
     public int counter = 0;
     public int scoreMultiplier = 1;
 
+    [SerializeField]
+    private float gameTime = 180f;
+
+    private float gameCounter;
+
+    public bool gameEnd = false;
+
     // Start is called before the first frame update
     void Start()
     {
         ResetScore();
+        gameCounter = gameTime;
     }
 
     private void ResetScore()
@@ -66,9 +74,21 @@ public class GameManager : MonoBehaviour
         
     }
 
+    public float GetTimeRemaining()
+    {
+        return this.gameCounter;
+    }
+
     private void Update()
     {
         SetMultiplier();
+
+        gameCounter -= Time.deltaTime;
+        if (gameCounter <= 0)
+            gameEnd = true;
+
+        if (gameEnd)
+            Debug.Log("Stop game");
     }
 
     private void SetMultiplier()

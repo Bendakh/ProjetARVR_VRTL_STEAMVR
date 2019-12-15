@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8343651525778873414}
   - component: {fileID: 8343651525778873415}
   - component: {fileID: -3100717364699557404}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TargetR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -108,6 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreValue: 5
   color: 2
+  moveSpeed: 30
 --- !u!54 &8343651525778873415
 Rigidbody:
   m_ObjectHideFlags: 0
