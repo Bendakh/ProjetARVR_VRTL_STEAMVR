@@ -38,6 +38,7 @@ public class GameManager : MonoBehaviour
     {
         ResetScore();
         gameCounter = gameTime;
+        GameObject.FindGameObjectWithTag("Spawner").SendMessage("StartInstantiating");
     }
 
     private void ResetScore()
