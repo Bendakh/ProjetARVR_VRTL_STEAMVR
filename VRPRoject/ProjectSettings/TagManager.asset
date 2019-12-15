@@ -7,6 +7,7 @@ TagManager:
   - Shuriken
   - HUD
   - Generator
+  - InGameCanvas
   layers:
   - Default
   - TransparentFX

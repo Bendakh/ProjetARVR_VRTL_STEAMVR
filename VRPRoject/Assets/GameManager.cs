@@ -88,7 +88,11 @@ public class GameManager : MonoBehaviour
             gameEnd = true;
 
         if (gameEnd)
+        {
+            gameCounter = 0;
+            GameObject.FindGameObjectWithTag("InGameCanvas").SendMessage("SetScoreText", this.score);
             Debug.Log("Stop game");
+        }
     }
 
     private void SetMultiplier()
