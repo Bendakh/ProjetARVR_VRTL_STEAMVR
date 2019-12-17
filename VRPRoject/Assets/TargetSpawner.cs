@@ -45,4 +45,16 @@ public class TargetSpawner : MonoBehaviour
             
         }
     }
+
+    public void SetUpFirstTargets()
+    {
+        for(int i = 0; i < 3; i++)
+        {
+            Instantiate(targetList[0], new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Random.Range(minZ, maxZ)), Quaternion.identity);
+            Instantiate(targetList[1], new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Random.Range(minZ, maxZ)), Quaternion.identity);
+            Instantiate(targetList[2], new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Random.Range(minZ, maxZ)), Quaternion.identity);
+            Instantiate(targetList[3], new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Random.Range(minZ, maxZ)), Quaternion.identity);
+        }
+        
+    }
 }

@@ -27,18 +27,22 @@ public class GameManager : MonoBehaviour
     public int scoreMultiplier = 1;
 
     [SerializeField]
+    GameObject startTarget;
+
+    [SerializeField]
     private float gameTime = 180f;
 
     private float gameCounter;
 
     public bool gameEnd = false;
+    public bool gameStarted = false;
 
     // Start is called before the first frame update
     void Start()
     {
         ResetScore();
         gameCounter = gameTime;
-        GameObject.FindGameObjectWithTag("Spawner").SendMessage("StartInstantiating");
+        //GameObject.FindGameObjectWithTag("Spawner").SendMessage("StartInstantiating");
     }
 
     private void ResetScore()
@@ -84,17 +88,29 @@ public class GameManager : MonoBehaviour
     {
         SetMultiplier();
 
-        gameCounter -= Time.deltaTime;
-        if (gameCounter <= 0)
-            gameEnd = true;
+        if(gameStarted)
+            gameCounter -= Time.deltaTime;
 
-        if (gameEnd)
+        if (gameCounter <= 0)
         {
-            gameCounter = 0;
+            gameEnd = true;
+        }
+
+        if (gameEnd && gameStarted)
+        {     
             GameObject.FindGameObjectWithTag("InGameCanvas").SendMessage("SetScoreText", this.score);
-            Debug.Log("Stop game");
+            startTarget.SetActive(true);
+            gameStarted = false;
         }
     }
+
+    public void ResetGame()
+    {
+        ResetScore();
+        gameCounter = gameTime;
+        gameEnd = false;
+        gameStarted = true;
+}
 
     private void SetMultiplier()
     {
