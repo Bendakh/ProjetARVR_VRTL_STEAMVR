@@ -7,22 +7,36 @@ public class TargetSpawner : MonoBehaviour
     [SerializeField]
     GameObject[] targetList;
 
-    private float minY = 5f;
-    private float maxY = 10f;
+    private float minY;
+    private float maxY;
 
-    private float minX = -20f;
-    private float maxX = 20f;
+    private float minX;
+    private float maxX;
 
-    private float minZ = -20f;
-    private float maxZ = 20f;
+    private float minZ;
+    private float maxZ;
 
     private float delay = 3f;
         
     // Start is called before the first frame update
     void Start()
     {
+        GetPlayableZone();
         
     }
+
+    void GetPlayableZone()
+    {
+        minX = GameManager.MinXPlayableZone;
+        maxX = GameManager.MaxXPlayableZone;
+
+        minY = GameManager.MinYPlayableZone;
+        maxY = GameManager.MaxYPlayableZone;
+
+        minZ = GameManager.MinZPlayableZone;
+        maxZ = GameManager.MaxZPlayableZone;
+    }
+
 
     // Update is called once per frame
     void Update()

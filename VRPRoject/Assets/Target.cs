@@ -9,13 +9,13 @@ public class Target : MonoBehaviour
     [SerializeField]
     private TargetColors color;
     [SerializeField]
-    private float moveSpeed = 30;
+    private float moveSpeed = 20;
 
-    private float minX = -20f;
-    private float maxX = 20f;
+    private float minX;
+    private float maxX;
 
-    private float minZ = -20f;
-    private float maxZ = 20f;
+    private float minZ;
+    private float maxZ;
 
     Vector3[] directions = {Vector3.right, Vector3.left, Vector3.forward, Vector3.back};
 
@@ -29,8 +29,18 @@ public class Target : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        GetPlayableZone();
         if(!moveCircularBool)
             InvokeRepeating("MoveHor",0,3);
+    }
+
+    void GetPlayableZone()
+    {
+        minX = GameManager.MinXPlayableZone;
+        maxX = GameManager.MaxXPlayableZone;
+
+        minZ = GameManager.MinZPlayableZone;
+        maxZ = GameManager.MaxZPlayableZone;
     }
 
     // Update is called once per frame

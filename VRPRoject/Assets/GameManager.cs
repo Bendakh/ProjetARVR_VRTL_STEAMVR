@@ -39,6 +39,42 @@ public class GameManager : MonoBehaviour
 
     public int bestScore = 0;
 
+
+    [Header("Playable Zone")]
+
+    [SerializeField]
+    private float minXPlayableZone = -20f;
+
+    public static float MinXPlayableZone => _instance.minXPlayableZone;
+
+    [SerializeField]
+
+    private float maxXPlayableZone = 20f;
+
+    public static float MaxXPlayableZone => _instance.maxXPlayableZone;
+
+    [SerializeField]
+    private float minYPlayableZone = 5f;
+
+    public static float MinYPlayableZone => _instance.minYPlayableZone;
+
+    [SerializeField]
+
+    private float maxYPlayableZone = 10f;
+
+    public static float MaxYPlayableZone => _instance.maxYPlayableZone;
+
+    [SerializeField]
+    private float minZPlayableZone = -20f;
+
+    public static float MinZPlayableZone => _instance.minZPlayableZone;
+
+    [SerializeField]
+
+    private float maxZPlayableZone = 20f;
+
+    public static float MaxZPlayableZone => _instance.maxZPlayableZone;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +86,7 @@ public class GameManager : MonoBehaviour
 
         ResetScore();
         gameCounter = gameTime;
+
         //GameObject.FindGameObjectWithTag("Spawner").SendMessage("StartInstantiating");
     }
 
@@ -102,6 +139,7 @@ public class GameManager : MonoBehaviour
         if (gameCounter <= 0)
         {
             gameEnd = true;
+            gameCounter = 0;
         }
 
         if (gameEnd && gameStarted)
