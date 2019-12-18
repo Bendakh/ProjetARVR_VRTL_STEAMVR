@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private int score;
+    int score;
     public int comboCounter = 0;
 
     public TargetColors[] sequenceCombo;
@@ -37,9 +37,17 @@ public class GameManager : MonoBehaviour
     public bool gameEnd = false;
     public bool gameStarted = false;
 
+    public int bestScore = 0;
+
     // Start is called before the first frame update
     void Start()
     {
+        if(PlayerPrefs.HasKey("score"))
+        {
+            bestScore = PlayerPrefs.GetInt("score");
+            GameObject.FindGameObjectWithTag("InGameCanvas").SendMessage("SetScoreText", PlayerPrefs.GetInt("score"));
+        }
+
         ResetScore();
         gameCounter = gameTime;
         //GameObject.FindGameObjectWithTag("Spawner").SendMessage("StartInstantiating");
@@ -97,8 +105,13 @@ public class GameManager : MonoBehaviour
         }
 
         if (gameEnd && gameStarted)
-        {     
-            GameObject.FindGameObjectWithTag("InGameCanvas").SendMessage("SetScoreText", this.score);
+        {   if(score > bestScore)
+            {
+                PlayerPrefs.SetInt("score", score);
+                PlayerPrefs.Save();
+                bestScore = score;
+            }
+            GameObject.FindGameObjectWithTag("InGameCanvas").SendMessage("SetScoreText", this.bestScore);
             startTarget.SetActive(true);
             gameStarted = false;
         }
@@ -107,10 +120,13 @@ public class GameManager : MonoBehaviour
     public void ResetGame()
     {
         ResetScore();
+        comboCounter = 0;
+        counter = 0;
         gameCounter = gameTime;
         gameEnd = false;
         gameStarted = true;
-}
+        GameObject.FindGameObjectWithTag("Generator").SendMessage("GenerateSequence");
+    }
 
     private void SetMultiplier()
     {
