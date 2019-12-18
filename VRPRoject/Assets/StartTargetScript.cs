@@ -8,6 +8,8 @@ public class StartTargetScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Shuriken"))
         {
+            GameManager._instance.PlayHitSound();
+
             GameObject.FindGameObjectWithTag("Spawner").SendMessage("SetUpFirstTargets");          
             GameObject.FindGameObjectWithTag("Spawner").SendMessage("StartInstantiating");         
             this.gameObject.SetActive(false);

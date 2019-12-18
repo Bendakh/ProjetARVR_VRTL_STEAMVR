@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
+
+
     [SerializeField]
     private int scoreValue;
     [SerializeField]
@@ -88,8 +90,9 @@ public class Target : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Shuriken"))
         {
-            
-            if(!GameManager._instance.FillAndCompare(color))
+            GameManager._instance.PlayHitSound();
+
+            if (!GameManager._instance.FillAndCompare(color))
             {
                 Debug.Log("NO");
                 GameManager._instance.comboCounter = 0;
@@ -104,6 +107,7 @@ public class Target : MonoBehaviour
             Destroy(collision.gameObject);
             if (GameManager._instance.counter == 7)
             {
+                GameManager._instance.IncreaseTime();
                 Debug.Log("Victory");
                 GameObject.FindGameObjectWithTag("Generator").SendMessage("GenerateSequence");
             }

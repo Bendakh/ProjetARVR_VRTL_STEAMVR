@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     public int counter = 0;
     public int scoreMultiplier = 1;
 
+    public float gameCounterIncrease;
+
     [SerializeField]
     GameObject startTarget;
 
@@ -105,6 +107,11 @@ public class GameManager : MonoBehaviour
         return this.score;  
     }
 
+    public void IncreaseTime()
+    {
+        this.gameCounter += gameCounterIncrease;
+    }
+
     public bool FillAndCompare(TargetColors color)
     {
         
@@ -174,6 +181,11 @@ public class GameManager : MonoBehaviour
             scoreMultiplier = 2;
         else if (comboCounter >= 10)
             scoreMultiplier = 3;
+    }
+
+    public void PlayHitSound()
+    {
+        GetComponent<AudioSource>().Play();
     }
 
 }

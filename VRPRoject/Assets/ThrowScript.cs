@@ -7,8 +7,9 @@ using VRTK;
 
 public class ThrowScript : MonoBehaviour
 {
-    
 
+    [SerializeField]
+    AudioClip shurikenThrowAudio;
     [SerializeField]
     private GameObject shurikenPrefab;
     
@@ -26,7 +27,7 @@ public class ThrowScript : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            
+            GetComponent<AudioSource>().Play();
             GameObject shu = Instantiate(shurikenPrefab, this.transform.position, Quaternion.identity);
 
 
@@ -36,6 +37,7 @@ public class ThrowScript : MonoBehaviour
 
     public void ThorwShuriken()
     {
+        GetComponent<AudioSource>().Play();
         GameObject shu = Instantiate(shurikenPrefab, this.transform.position, Quaternion.identity);
         shu.transform.rotation = this.transform.rotation;
 
