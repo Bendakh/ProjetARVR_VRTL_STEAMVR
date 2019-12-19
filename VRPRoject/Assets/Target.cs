@@ -12,6 +12,8 @@ public class Target : MonoBehaviour
     private TargetColors color;
     [SerializeField]
     private float moveSpeed = 20;
+    [SerializeField]
+    private FXManager fxmanager;
 
     private float minX;
     private float maxX;
@@ -34,6 +36,7 @@ public class Target : MonoBehaviour
         GetPlayableZone();
         if(!moveCircularBool)
             InvokeRepeating("MoveHor",0,3);
+        fxmanager = GameObject.FindGameObjectWithTag("FXGenerator").GetComponent<FXManager>();
     }
 
     void GetPlayableZone()
@@ -90,7 +93,8 @@ public class Target : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Shuriken"))
         {
-            GameManager._instance.PlayHitSound();
+            //GameManager._instance.PlayHitSound();
+            fxmanager.SendMessage("PlayRandomTargetDestroyed");
 
             if (!GameManager._instance.FillAndCompare(color))
             {
@@ -111,6 +115,9 @@ public class Target : MonoBehaviour
                 Debug.Log("Victory");
                 GameObject.FindGameObjectWithTag("Generator").SendMessage("GenerateSequence");
             }
+
+            
+
             Destroy(this.gameObject);
         }
     }

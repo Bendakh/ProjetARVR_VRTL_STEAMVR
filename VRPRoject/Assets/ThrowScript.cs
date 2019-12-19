@@ -12,6 +12,8 @@ public class ThrowScript : MonoBehaviour
     AudioClip shurikenThrowAudio;
     [SerializeField]
     private GameObject shurikenPrefab;
+
+    private float throwingSpeed;
     
 
     [SerializeField]
@@ -19,7 +21,7 @@ public class ThrowScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        throwingSpeed = GameManager.ThrowingShurikenSpeed;
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class ThrowScript : MonoBehaviour
             GameObject shu = Instantiate(shurikenPrefab, this.transform.position, Quaternion.identity);
 
 
-            shu.GetComponent<Rigidbody>().velocity = this.transform.forward * 20;
+            shu.GetComponent<Rigidbody>().velocity = this.transform.forward * throwingSpeed;
         }
     }
 
@@ -41,6 +43,6 @@ public class ThrowScript : MonoBehaviour
         GameObject shu = Instantiate(shurikenPrefab, this.transform.position, Quaternion.identity);
         shu.transform.rotation = this.transform.rotation;
 
-        shu.GetComponent<Rigidbody>().velocity = this.transform.forward * 20;
+        shu.GetComponent<Rigidbody>().velocity = this.transform.forward * throwingSpeed;
     }
 }

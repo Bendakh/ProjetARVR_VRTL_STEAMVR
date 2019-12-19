@@ -41,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     public int bestScore = 0;
 
+    public MusicManager music;
+
 
     [Header("Playable Zone")]
 
@@ -77,6 +79,11 @@ public class GameManager : MonoBehaviour
 
     public static float MaxZPlayableZone => _instance.maxZPlayableZone;
 
+    [SerializeField]
+    private float throwingShurikenSpeed = 20f;
+
+    public static float ThrowingShurikenSpeed => _instance.throwingShurikenSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -88,6 +95,7 @@ public class GameManager : MonoBehaviour
 
         ResetScore();
         gameCounter = gameTime;
+        music = GameObject.FindGameObjectWithTag("MusicGenerator").GetComponent<MusicManager>();
 
         //GameObject.FindGameObjectWithTag("Spawner").SendMessage("StartInstantiating");
     }
@@ -157,6 +165,8 @@ public class GameManager : MonoBehaviour
                 bestScore = score;
             }
             GameObject.FindGameObjectWithTag("InGameCanvas").SendMessage("SetScoreText", this.bestScore);
+            GameObject.FindGameObjectWithTag("MusicGenerator").GetComponent<MusicManager>().SendMessage("StopMusic");
+            GameObject.FindGameObjectWithTag("MusicGenerator").GetComponent<MusicManager>().SendMessage("PlayWaiting");
             startTarget.SetActive(true);
             gameStarted = false;
         }

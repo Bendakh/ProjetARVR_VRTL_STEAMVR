@@ -11,7 +11,8 @@ public class StartTargetScript : MonoBehaviour
             GameManager._instance.PlayHitSound();
 
             GameObject.FindGameObjectWithTag("Spawner").SendMessage("SetUpFirstTargets");          
-            GameObject.FindGameObjectWithTag("Spawner").SendMessage("StartInstantiating");         
+            GameObject.FindGameObjectWithTag("Spawner").SendMessage("StartInstantiating");
+            GameObject.FindGameObjectWithTag("MusicGenerator").SendMessage("PlayAmbiance");
             this.gameObject.SetActive(false);
             GameManager._instance.ResetGame();
             

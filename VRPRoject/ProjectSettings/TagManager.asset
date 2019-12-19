@@ -9,6 +9,10 @@ TagManager:
   - Generator
   - InGameCanvas
   - Spawner
+  - FxTemporaire
+  - projectile
+  - FXGenerator
+  - MusicGenerator
   layers:
   - Default
   - TransparentFX

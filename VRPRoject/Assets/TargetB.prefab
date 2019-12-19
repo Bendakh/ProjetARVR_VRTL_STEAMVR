@@ -110,6 +110,7 @@ MonoBehaviour:
   scoreValue: 5
   color: 1
   moveSpeed: 10
+  fxmanager: {fileID: 0}
 --- !u!54 &5945159785639920826
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -146,7 +147,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5945159785639920827}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a9b118e47e8921648926e53c99cd2990, type: 3}
