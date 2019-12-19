@@ -67,6 +67,8 @@ public class HUDScript : MonoBehaviour
         for(int i = 0; i < sequence.Length; i++)
         {
             GameObject temp = Instantiate(targetGFXPrefab);
+            temp.transform.localScale = new Vector3(0.005f, 0.005f, 0.005f);
+            
             switch(sequence[i])
             {
                 case TargetColors.YELLOW:
@@ -84,6 +86,8 @@ public class HUDScript : MonoBehaviour
             }
 
             temp.transform.SetParent(sequencePanel.transform);
+            temp.transform.localPosition = new Vector3(temp.transform.position.x, temp.transform.position.y, 0f);
+            temp.transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         }
     }
 }

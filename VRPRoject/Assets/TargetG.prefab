@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreValue: 5
   color: 3
-  moveSpeed: 15
+  moveSpeed: 10
 --- !u!54 &3802621513585476171
 Rigidbody:
   m_ObjectHideFlags: 0
