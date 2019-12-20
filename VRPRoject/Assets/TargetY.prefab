@@ -109,7 +109,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreValue: 5
   color: 0
-  moveSpeed: 10
+  moveSpeed: 5
   fxmanager: {fileID: 0}
 --- !u!54 &1903729452443763227
 Rigidbody:
