@@ -27,12 +27,13 @@ public class GameManager : MonoBehaviour
     public int scoreMultiplier = 1;
 
     public float gameCounterIncrease;
+    public float gameCounterDecrease;
 
     [SerializeField]
     GameObject startTarget;
 
     [SerializeField]
-    private float gameTime = 180f;
+    private float gameTime = 120f;
 
     private float gameCounter;
 
@@ -118,6 +119,11 @@ public class GameManager : MonoBehaviour
     public void IncreaseTime()
     {
         this.gameCounter += gameCounterIncrease;
+    }
+
+    public void DecreaseTime()
+    {
+        this.gameCounter -= gameCounterDecrease;
     }
 
     public bool FillAndCompare(TargetColors color)

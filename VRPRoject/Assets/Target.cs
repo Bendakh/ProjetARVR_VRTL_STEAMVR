@@ -99,6 +99,8 @@ public class Target : MonoBehaviour
             if (!GameManager._instance.FillAndCompare(color))
             {
                 Debug.Log("NO");
+                GameManager._instance.DecreaseTime();
+                GameObject.FindGameObjectWithTag("FXGenerator").SendMessage("PlayFailSound");
                 GameManager._instance.comboCounter = 0;
                 GameObject.FindGameObjectWithTag("Generator").SendMessage("GenerateSequence");
             }

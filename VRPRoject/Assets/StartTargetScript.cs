@@ -13,9 +13,9 @@ public class StartTargetScript : MonoBehaviour
             GameObject.FindGameObjectWithTag("Spawner").SendMessage("SetUpFirstTargets");          
             GameObject.FindGameObjectWithTag("Spawner").SendMessage("StartInstantiating");
             GameObject.FindGameObjectWithTag("MusicGenerator").SendMessage("PlayAmbiance");
-            this.gameObject.SetActive(false);
-            GameManager._instance.ResetGame();
             
+            GameManager._instance.ResetGame();
+            this.gameObject.SetActive(false);
         }
     }
 }

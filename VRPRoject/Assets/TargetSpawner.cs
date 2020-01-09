@@ -16,7 +16,7 @@ public class TargetSpawner : MonoBehaviour
     private float minZ;
     private float maxZ;
 
-    private float delay = 3f;
+    private float delay = 1.5f;
         
     // Start is called before the first frame update
     void Start()
@@ -62,7 +62,7 @@ public class TargetSpawner : MonoBehaviour
 
     public void SetUpFirstTargets()
     {
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < 4; i++)
         {
             Instantiate(targetList[0], new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Random.Range(minZ, maxZ)), Quaternion.identity);
             Instantiate(targetList[1], new Vector3(Random.Range(minX, maxX), Random.Range(minY, maxY), Random.Range(minZ, maxZ)), Quaternion.identity);
